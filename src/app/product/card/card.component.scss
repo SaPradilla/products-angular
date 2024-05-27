@@ -1,0 +1,33 @@
+.card{
+
+    display: flex;
+    flex-direction: column;
+    width: 12rem;
+    height: 23rem;
+    max-height: 25rem;
+    // height:20rem;
+    box-shadow: 0px 0px 40px 5px rgba(0, 0, 0, 0.084);
+    border-radius: 1rem;
+    margin: 0 auto;
+    font-size: 1rem;
+    .card__img{
+        display: flex;
+        justify-content: center;
+        img{
+            width: 10rem;
+        }
+    }
+
+    .card__info{
+        text-align: left;
+        padding: 1rem;
+
+        small.precio{
+            // color: #3f3f3fcc;
+            font-weight: 500 ;
+        }
+        p.card__info__category{
+
+        }
+    }
+}

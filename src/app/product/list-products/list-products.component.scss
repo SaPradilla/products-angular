@@ -1,0 +1,44 @@
+div.list_products{
+
+    display: grid;
+    padding: 2rem;
+    grid-template-columns: repeat(auto-fit,
+    minmax(300px,
+        1fr));
+    gap: 1rem;
+    width: 60rem;
+    margin: 0 auto;
+}
+.error_products{
+    margin-top: 4rem;
+    color: rgb(179, 4, 4);
+    font-weight: 800;
+    text-align: center;   
+}
+
+.pagination-controls{
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    width: 10rem;
+    p{
+        font-size: 1.4rem;
+        font-weight: 500;
+    }
+    button{
+        border: none;
+        background-color: #6b05ca;
+        color: white;
+        height: 2rem;
+        width: 4rem;
+        border-radius: 1rem;
+        cursor: pointer;
+
+    }
+    button:disabled{
+        background-color: #41057888;
+    }
+
+}
