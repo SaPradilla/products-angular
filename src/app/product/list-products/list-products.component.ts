@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CardComponent } from '../card/card.component';
 import { AsyncPipe } from '@angular/common';
 import { ProductService } from '../../core/services/product.service';
-import { EMPTY, Observable, catchError } from 'rxjs';
+import { EMPTY, Observable, catchError, tap } from 'rxjs';
 import { Product, responseGetProducts } from '../../core/models/products.interface';
 
 @Component({
@@ -31,6 +31,7 @@ export class ListProductsComponent  {
   loadProducts(page:number){
 
     this.productsList$ = this.service.getProducts(page).pipe(
+      tap( (x)=> { console.log(x) } ),
       catchError((error:string)=>{
           this.errorMsg = error;
           // Retorna un observable vacio

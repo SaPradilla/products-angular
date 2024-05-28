@@ -15,7 +15,7 @@ export class ProductService {
     private http:HttpClient
   ) {}
 
-  getProducts(page:number):Observable<responseGetProducts>{
+  getProducts(page:number): Observable<responseGetProducts> {
     return this.http.get<responseGetProducts>(`${environment.BASE_URL}/products?_page=${page}&_per_page=3`)
   }
   

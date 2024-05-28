@@ -2,7 +2,9 @@
     <p class="error_products"> Error al cargar los productos :/ </p>
 }
 
+
 @if(productsList$ | async; as resultObject ){
+
     <div class="list_products">
 
         @for( product of resultObject.data; track product.name){
@@ -16,6 +18,7 @@
         <p>{{ resultObject.prev === null ? '1' : resultObject.prev + 1 }}</p>
         <button (click)="nextPage()" [disabled]="!resultObject.next">Next</button>
     </div>
+    
 }
 
 
