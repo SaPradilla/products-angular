@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CardComponent } from '../card/card.component';
 import { AsyncPipe } from '@angular/common';
 import { ProductService } from '../../core/services/product.service';
-import { EMPTY, Observable, catchError, tap } from 'rxjs';
+import { EMPTY, Observable, catchError, tap,map } from 'rxjs';
 import { Product, responseGetProducts } from '../../core/models/products.interface';
 
 @Component({
@@ -15,9 +15,13 @@ import { Product, responseGetProducts } from '../../core/models/products.interfa
 
 export class ListProductsComponent  {
 
+  @Input() handleModal! : ()=> void ;
+
+
   public productsList$!: Observable<responseGetProducts>;
   public errorMsg!: string;
   public currentPage:number = 1;
+ 
 
   constructor(
     private service:ProductService
@@ -25,24 +29,24 @@ export class ListProductsComponent  {
 
   // al montar
   ngOnInit():void{
-    this.loadProducts(this.currentPage); 
+    this.loadProducts(this.currentPage);
   }
 
   loadProducts(page:number){
-
     this.productsList$ = this.service.getProducts(page).pipe(
-      tap( (x)=> { console.log(x) } ),
       catchError((error:string)=>{
           this.errorMsg = error;
           // Retorna un observable vacio
           return EMPTY;
       })
   )};
+
   // pasar de pagina
   nextPage() {
     this.currentPage++;
     this.loadProducts(this.currentPage);
   };
+
   // devolver
   prevPage(){
 
@@ -51,6 +55,7 @@ export class ListProductsComponent  {
       this.loadProducts(this.currentPage);
     }
   }
+
 
 
 

@@ -1,0 +1,76 @@
+div.form-modal{
+
+    z-index: 100;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(6px) brightness(100%);
+    background-color: rgba(7, 1, 16, 0.5);
+    
+    form{
+        background-color: white;
+        padding: 2.2rem;
+        border-radius: 2em;
+        width: 20rem;
+        h2{
+            text-align: center;
+                
+        }
+        div.form-input{
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+        
+
+            input,select{
+                padding: .4rem;
+                border: 1px solid #6b05ca ;
+                border-radius: .6rem;
+            }
+            div.error-message{
+                height: 1.5rem;
+                small{
+                    text-align:center ;
+                    font-size: .9rem;
+                    color: red;
+                }
+            }
+
+
+        }
+
+        div.buttons{
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            button.form-modal_botton{
+                border: none;
+                width: 6rem;
+                height:2.5rem;
+                background-color: #6b05ca;
+                border-radius: .7rem;
+                color: white;
+                font-weight: 600;
+                font-style: 1.2rem;
+                cursor: pointer;
+                transition: all .2s ease-in;
+            }
+            button.form-modal_botton--cancel{
+                background-color: transparent;
+                color: #6b05ca;
+                border: 1px solid #6b05ca;
+            }
+            button.form-modal_botton:hover{
+                background-color: #7c06eb;
+            }
+            button.form-modal_botton--cancel:hover{
+                background-color: #5500a539;
+            }
+
+        }
+        
+    }
+}

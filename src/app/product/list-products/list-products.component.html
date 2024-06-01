@@ -1,24 +1,36 @@
-@if(errorMsg){
-    <p class="error_products"> Error al cargar los productos :/ </p>
-}
 
 
-@if(productsList$ | async; as resultObject ){
+<div class="content_products">
 
-    <div class="list_products">
-
-        @for( product of resultObject.data; track product.name){
-            <app-card [productItem]="product" />
-        }
-
+    <div class="content_products_button">
+        <button (click)="handleModal()" class="add-product"> Add Product </button>
     </div>
 
-    <div class="pagination-controls">
-        <button (click)="prevPage()" [disabled]="!resultObject.prev">Prev</button>
-        <p>{{ resultObject.prev === null ? '1' : resultObject.prev + 1 }}</p>
-        <button (click)="nextPage()" [disabled]="!resultObject.next">Next</button>
-    </div>
+    @if(errorMsg){
+        <p class="error_products"> Error loading products :/ </p>
+    }
     
-}
+    
+    @if(productsList$ | async; as resultObject ){
+    
+        <div class="list_products">
+    
+            @for( product of resultObject.data; track product.name){
+                <app-card [productItem]="product" />
+            }
+    
+        </div>
+    
+        <div class="pagination-controls">
+            <button (click)="prevPage()" [disabled]="!resultObject.prev">Prev</button>
+            <p>{{ resultObject.prev === null ? '1' : resultObject.prev + 1 }}</p>
+            <button (click)="nextPage()" [disabled]="!resultObject.next">Next</button>
+        </div>
+    
+    
+    
+    }
+
+</div>
 
 
