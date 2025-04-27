@@ -1,0 +1,77 @@
+<div class="container__shopping_card">
+
+    <div class="shopping_card">
+        <div class="shopping_card__container" 
+            [class.open]="shoppingCartStatus() === true"
+            [class.closed]="shoppingCartStatus() === false"
+            >
+           
+            <!-- header -->
+            <div class="shopping_card__header">
+                <h2>Your Cart</h2>
+                <button class="form-modal__close" mat-icon-button color="primary" (click)="toggleStatus()"> 
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
+            <!-- content -->
+            <div class="shopping_card__content">
+                @if (carrito && carrito.length > 0) {
+                    <div class="shopping_card_content__list">
+                        @for (item of carrito; track $index) {
+                            <div class="shopping_card__container__item">
+
+                                <img [src]="item.image" [alt]="'image' + item.name">
+
+                                <div class="shopping_card__container__item__content">
+                                    <h3>{{ item.name }}</h3>
+                                    <small> ${{ item.value }} </small>
+                                    <!-- Button cart -->
+                                    
+                                    <div class="shopping_card__container__item__actions__cart">
+                                        <div class="shopping_card__container__item__actions__button">
+                                            <button mat-icon-button (click)="incrementar(item.id)">
+                                                <mat-icon>
+                                                    add
+                                                </mat-icon>
+                                            </button>
+                                            <p> {{ item.cantidad }}</p>
+                                            <button mat-icon-button  color="warn" (click)="decrementar(item.id)">
+                                                <mat-icon>
+                                                    remove
+                                                </mat-icon>
+                                            </button>
+                                        </div>
+                                        <button mat-icon-button color="warn" (click)="eliminar(item.id)">
+                                            <mat-icon > delete_forever </mat-icon>
+                                        </button>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    
+                    
+                }@else {
+                    <!-- empyt -->
+                    <div class="shopping_card_content__empty">
+                        <mat-icon> shopping_cart_off </mat-icon>
+                        <p>Your cart is currently empty</p>
+                    </div>
+                }
+
+            </div>
+            @if (carrito) {
+                <button  mat-flat-button color="primary">
+                    Checkout
+                 </button>
+            }@else {
+                <!-- button empy-->
+                <button  mat-flat-button color="primary">
+                   Continue Shopping 
+                </button>
+            }
+        </div>
+    </div>
+
+</div>

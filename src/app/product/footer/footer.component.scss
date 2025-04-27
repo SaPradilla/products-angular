@@ -1,0 +1,37 @@
+.footer_product{
+
+    // height: 3rem;
+    
+    width: 100%;
+    // position: absolute;
+    bottom: 0;
+    padding: .5rem 0;
+    .footer_container{
+        display: flex;
+        place-content: center;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+
+
+        .footer__icon{
+            height: 4rem;
+            width: 4rem;
+            font-size: 4rem;
+        }
+        .footer__copyright{
+            color: #ccca;
+            text-align: center;
+        }
+        .footer_product__contact{
+            // display: flex;
+            // align-items: center;
+        }
+    }
+    .footer_product__contact__redes{
+        img{
+            width: 1.6rem;
+            height: 1.6rem;
+        }
+    }
+}

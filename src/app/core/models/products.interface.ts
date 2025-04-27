@@ -4,8 +4,7 @@ export interface Category {
 }
 
 export interface Product {
-
-    id:number;
+    id:string;
     categoryId:number;
     name:string;
     description:string;
@@ -15,8 +14,7 @@ export interface Product {
     image:string;
     liked:Boolean;
     status:Boolean;
-    category:Category;
-
+    category:Category[];
 }
 
 export interface responseGetProducts {

@@ -1,12 +1,101 @@
+@use './theme' as theme;
+@use '@angular/material' as mat;
+
 /* You can add global styles to this file, and also import other style files */
 *{
     font-family: "Raleway", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-}
-
-body{
     margin: 0;
     padding: 0;
-    width: 100%;
+    
 }
+   
+html, body { height: 100%; }
+
+
+
+
+.dark-theme {
+    @include mat.all-component-colors(theme.$dark-theme);
+    // componente login
+    div.login,
+    main.home,
+    div.content_products,
+    div.product_view,
+    .mat-mdc-menu-content,
+    .shopping_card__container{
+        background-color: mat.get-theme-color(theme.$light-theme, primary, 900);
+        color:  mat.get-theme-color(theme.$light-theme, primary,  900-contrast);
+    }
+
+    header{
+        background-color: mat.get-theme-color(theme.$light-theme, primary, 700);
+        color: mat.get-theme-color(theme.$light-theme, primary, A200);
+    }
+    div.card,
+    .card-skeleton{
+        background-color: mat.get-theme-color(theme.$light-theme, primary, 700);
+        color:  mat.get-theme-color(theme.$light-theme, primary,  A200);
+    }
+
+    div.login{
+        form{
+            background-color: mat.get-theme-color(theme.$light-theme, primary, 700);
+
+        }
+    }
+ 
+
+}
+
+.light-theme {
+    div.login,
+    main.home,
+    div.content_products,
+    div.product_view,
+    .mat-mdc-menu-content,
+    .shopping_card__container
+    {
+        background-color: mat.get-theme-color(theme.$light-theme, primary, 900-contrast);
+        color: mat.get-theme-color(theme.$light-theme, primary, 900);
+    }
+
+    header{
+        background-color: mat.get-theme-color(theme.$light-theme, primary, A200);
+        color:  mat.get-theme-color(theme.$light-theme, primary,  A200-contrast);
+    }
+    div.login{
+        form{
+            background-color: mat.get-theme-color(theme.$light-theme, primary, 50);
+
+        }
+    }
+
+
+}
+// header shop 
+.header__navbar,
+.footer_product,
+.shopping_card__container__item__actions__button
+{
+    background:  mat.get-theme-color(theme.$light-theme, primary,  A200);
+}
+.title__products hr{
+    border-color:  mat.get-theme-color(theme.$light-theme, primary,  A200);
+}
+
+// Modal
+div.form-modal.dark-theme{
+    color:mat.get-theme-color(theme.$light-theme, primary, 900-contrast) ;
+    form{
+        background-color:mat.get-theme-color(theme.$light-theme, primary, 700) ;
+    }
+}
+div.form-modal.light-theme{
+    color:mat.get-theme-color(theme.$light-theme, primary, 700)  ;
+    form{
+        background-color: mat.get-theme-color(theme.$light-theme, primary, 900-contrast);
+    }
+}
+

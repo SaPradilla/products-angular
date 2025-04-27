@@ -2,17 +2,13 @@
 <div class="card">
 
     <div class="card__img">
-        <img  [src]="productItem.image">
+        <img data-testId="image"  [src]="productItem.image">            
     </div>
     
     <div class="card__info">
-
-        <small class="precio"> {{ productItem.value | currency:'COP' :''}}$ </small>
-        <h3 > {{ productItem.name }}</h3>
-        <p> {{ productItem.brand }} </p>
-        <p class="card__info__category"> {{ productItem.category.name }} </p>
-        <p> {{ productItem.description }} </p>
-
+        <small data-testId="value" class="precio"> {{ productItem.value | currency:'COP' :''}}$ </small>
+        <h3 data-testId="name"> {{ productItem.name }}</h3>
+        <mat-chip data-testId="brand" class="brand"> {{ productItem.brand }} </mat-chip>
     </div>
 
 </div>

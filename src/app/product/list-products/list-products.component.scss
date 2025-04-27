@@ -1,18 +1,36 @@
 div.content_products{
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
-    
-    
+    justify-content: center;
+    // margin: 0 auto;
+    // height: 100%;
+    padding: 1rem 0 4rem;
+
+    .title__products{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 70%;
+        margin: 0 auto;
+        gap: 1rem;
+        hr{
+            width: 60rem;
+            border-radius: .6rem;
+            height: 0;
+        }
+    }
+
+
     div.list_products{
     
         display: grid;
         padding: 1rem;
         width: 70%;
+        // height: 100%;
         align-items: center;
         justify-content: center;
         grid-template-columns: repeat(auto-fit,
-        minmax(200px,
+        minmax(160px,
             1fr));
         gap: 1rem;
         app-card{
@@ -23,27 +41,11 @@ div.content_products{
     }
     .content_products_button{
         display: flex;
-        width: 100%;
+        // width: 100%;
         align-items: end;
         justify-content: end;
-        button.add-product{
-            
-            border: none;
-            width: 6rem;
-            height:2.5rem;
-            background-color: #6b05ca;
-            border-radius: .7rem;
-            color: white;
-            font-weight: 600;
-            font-style: 1.2rem;
-            cursor: pointer;
-            margin-top: 2rem;
-            margin-right: 2rem;
-            transition: all .3s ease-in;
-        }
-        button.add-product:hover{
-            background-color: #5500a5;
-        }
+        padding-top: 2rem;
+        padding-right: 2rem;
     }
     
     
@@ -60,7 +62,7 @@ div.content_products{
         justify-content: space-between;
         align-items: center;
         margin: 0 auto;
-        width: 10rem;
+        width: 10rem;   
         p{
             font-size: 1.4rem;
             font-weight: 500;

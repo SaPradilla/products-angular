@@ -1,14 +1,9 @@
 <!-- Modal form -->
 
-@if (modal) {
-    <app-form [handleModal]="handleModal.bind(this)"/>
-}
+<app-navbar></app-navbar>
+<app-list-products  (handleModal)="openDialog()"></app-list-products>
+<app-footer></app-footer>
 
-<div class="product">
-    
-    <app-navbar></app-navbar>
-    <app-list-products  [handleModal]="handleModal.bind(this)"></app-list-products>
 
-</div>
 
 

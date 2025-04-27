@@ -1,0 +1,61 @@
+.card-skeleton{
+
+    width: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 40px 5px rgba(0, 0, 0, 0.1);
+    border-radius: .5rem;
+    margin: 0 auto;
+    font-size: 1rem;
+    height: 16rem;
+    .card-skeleton__image{
+        height: 9rem;
+        width: 9rem;
+    }
+    .card-skeleton__image,
+    .card-skeleton__content__price,
+    .card-skeleton__content__title,
+    .card-skeleton__content__brand
+    {
+        margin:.6rem ;
+        background-color: #908e8e;
+        background: linear-gradient(
+        100deg,
+        rgba(255, 255, 255, 0) 40%,
+        rgba(255, 255, 255, .5) 50%,
+        rgba(255, 255, 255, 0) 60%
+        ) #838282;
+        background-size: 200% 100%;
+        background-position-x: 180%;
+        animation: 1s loading ease-in-out infinite;
+    }
+    .card-skeleton__content{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+       
+        .card-skeleton__content__price{
+            height: 1rem;
+            width: 4rem;
+        }
+        .card-skeleton__content__title{
+            height: 1rem;
+            width: 7rem;
+        }
+        .card-skeleton__content__brand{
+            height: 1.5rem;
+            width: 3rem;
+            border-radius: 2rem;
+        }
+    }
+
+
+}
+
+@keyframes loading {
+    to {
+      background-position-x: -20%;
+    }
+  }
+  

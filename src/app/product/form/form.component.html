@@ -1,197 +1,96 @@
-<div class="form-modal">
+<div class="form-modal" [class]=" isDarkTheme() ? 'dark-theme' : 'light-theme' ">
 
-    <form [formGroup]="proyectForm">
+    <button class="form-modal__close" mat-dialog-close  mat-icon-button color="primary"> 
+        <mat-icon>close</mat-icon>
+    </button>
+
+    <form [formGroup]="proyectForm" class="form-modal__form">
         <h2>Add Product</h2>
         <!-- Name -->
         <div class="form-input">
-            <label>Name</label>
-            <input type="text" formControlName="name">
-            <div class="error-message">
-                @if (
-                    
-                    proyectForm.controls['name'].invalid
-                 
-                    &&
-                    (
-                        proyectForm.controls['name'].touched
-                        ||
-                        proyectForm.controls['name'].dirty
-                        ||
-                        isFormSubmitted
-                    ) 
-                ) {
-                    <small>
-                        name is required*
-                    </small>
+            <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" required>
+                @if (proyectForm.get('name')?.hasError('required')){
+                    <mat-error>name is required*</mat-error>
                 }
-            </div>
+            </mat-form-field>
         </div>
 
         <!-- Description -->
         <div class="form-input">
-            <label>Description</label>
-            <input type="text" formControlName="description">
-            <div class="error-message">
-                @if (
-                    
-                    proyectForm.controls['description'].invalid
-                   
-                    &&
-                    (
-                        proyectForm.controls['description'].touched
-                        ||
-                        proyectForm.controls['description'].dirty
-                        ||
-                        isFormSubmitted
-                    ) 
-                ) {
-                    <small>
-                        description is required*
-                    </small>
+            <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <input matInput formControlName="description" required>
+                @if (proyectForm.get('description')?.hasError('required')){
+                    <mat-error>description is required*</mat-error>
                 }
-            </div>
+            </mat-form-field>
         </div>
+
         <!-- Amount -->
         <div class="form-input">
-            <label>Amount</label>
-            <input type="number" formControlName="amount">
-            <div class="error-message">
-                @if (
-                    proyectForm.controls['amount'].invalid
-                  
-                    &&
-                    (
-                        proyectForm.controls['amount'].touched
-                        ||
-                        proyectForm.controls['amount'].dirty
-                        ||
-                        isFormSubmitted
-                    ) 
-                ) {
-                    <small>
-                        amount is required*
-                    </small>
+            <mat-form-field appearance="outline">
+                <mat-label>Amount</mat-label>
+                <input matInput formControlName="amount" required>
+                @if (proyectForm.get('amount')?.hasError('required')){
+                    <mat-error>amount is required*</mat-error>
                 }
-            </div>
+            </mat-form-field>
         </div>
-        <!-- brand -->
+
+        <!-- Brand -->
         <div class="form-input">
-            <label>Brand</label>
-            <input type="text" formControlName="brand">
-            <div class="error-message">
-                @if (
-                    
-                    proyectForm.controls['brand'].invalid
-                   
-                    &&
-                    (
-                        proyectForm.controls['brand'].touched
-                        ||
-                        proyectForm.controls['brand'].dirty
-                        ||
-                        isFormSubmitted
-                    ) 
-                ) {
-                    <small>
-                        brand is required*
-                    </small>
+            <mat-form-field appearance="outline">
+                <mat-label>Brand</mat-label>
+                <input matInput formControlName="brand" required>
+                @if (proyectForm.get('brand')?.hasError('required')){
+                    <mat-error>brand is required*</mat-error>
                 }
-            </div>
+            </mat-form-field>
         </div>
+
         <!-- Value -->
         <div class="form-input">
-            <label>Value</label>
-            <input type="text" formControlName="value">
-            <div class="error-message">
-                @if (
-                    
-                    proyectForm.controls['value'].invalid
-                   
-                    &&
-                    (
-                        proyectForm.controls['value'].touched
-                        ||
-                        proyectForm.controls['value'].dirty
-                        ||
-                        isFormSubmitted
-                    ) 
-                ) {
-                    <small>
-                        value is required*
-                    </small>
+            <mat-form-field appearance="outline">
+                <mat-label>Value</mat-label>
+                <input matInput formControlName="value" required>
+                @if (proyectForm.get('value')?.hasError('required')){
+                    <mat-error>value is required*</mat-error>
                 }
-            </div>
+            </mat-form-field>
         </div>
+
         <!-- Image -->
         <div class="form-input">
-            <label>Image</label>
-            <input type="url" formControlName="image">
-            <div class="error-message">
-                @if (
-                    
-                    proyectForm.controls['image'].invalid
-                   
-                    &&
-                    (
-                        proyectForm.controls['image'].touched
-                        ||
-                        proyectForm.controls['image'].dirty
-                        ||
-                        isFormSubmitted
-                    ) 
-                ) {
-                    <small>
-                        image is required*
-                    </small>
+            <!-- <mat-form-field appearance="outline">
+                <mat-label>Amount</mat-label>
+                <input matInput formControlName="amount" required>
+                @if (proyectForm.get('amount')?.hasError('required')){
+                    <mat-error>amount is required*</mat-error>
                 }
-            </div>
+            </mat-form-field> -->
         </div>
+
         <!-- Category -->
         <div class="form-input">
-            <label>Category</label>
-            @if( categories$ | async; as categoryObject){
-                <select formControlName="category">
-                    <option value=" " selected >-- Select category --</option>
-                    @for( category of categoryObject; track category.id ){
-                        <option [value]="category.id"> {{ category.name }} </option>
-                    }
+            
+            <mat-form-field appearance="outline">
+                <mat-label>Category</mat-label>
+
+                <input type="text" matInput formControlName="category" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" >
+                  @for (option of filteredOptions | async; track option) {
+                    <mat-option [value]="option">{{option.name}}</mat-option>
+                  }
+                </mat-autocomplete>
+
+            </mat-form-field>
     
-                </select>
-            }@else if (errorMessage) {
-
-                <p class="error-message">
-                    No categories exist
-                </p>
-            }
-
-            <div class="error-message">
-                @if (
-                    
-                    proyectForm.controls['category'].invalid
-                   
-                    &&
-                    (
-                        proyectForm.controls['category'].touched
-                        ||
-                        proyectForm.controls['category'].dirty
-                        ||
-                        isFormSubmitted
-                    ) 
-                ) {
-                    <small>
-                        category is required*
-                    </small>
-                }
-            </div>
         </div>
 
-
-        <div class="buttons">
-
-            <button  (click)="handleModal()" class="form-modal_botton form-modal_botton--cancel"> Cancel </button>
-            
-            <button  (click)="onSubmit()" type="submit" class="form-modal_botton">  Save  </button>
-
+        <div class="buttons">       
+            <button  (click)="onSubmit()" type="submit" mat-flat-button  color="primary">  Save  </button>
         </div>
        
     </form>

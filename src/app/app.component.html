@@ -1,1 +1,6 @@
-<app-product></app-product>
+<!-- <app-product></app-product> -->
+<!-- <app-navbar></app-navbar> -->
+<div class="app" [class]=" isDarkTheme() ? 'dark-theme' : 'light-theme' ">
+    <!-- <button mat-button (click)="toggleTheme()">Toggle Theme</button> -->
+    <router-outlet></router-outlet>
+</div>

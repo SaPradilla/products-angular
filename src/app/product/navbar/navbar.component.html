@@ -1,7 +1,33 @@
 
-
+@if (shoppingCartStatus()) {
+    <app-shopping-card></app-shopping-card>
+}
+<div class="header__navbar" >
+    <span>Orders over $50 include a FREE A mistery GIFT</span>
+</div>
 <header>
+    <div class="header__content">
+        <div class="header__icon">
+            <a href="/">
+                <mat-icon class="icon">store</mat-icon>
+            </a>
+            <p> Generic Shop </p>
+        </div>
+        
+        <!-- Products -->
+      
+        <div class="icons">
+            <mat-icon class="icon">search</mat-icon>
+            <mat-icon class="icon" (click)="toggleStatus()">shopping_cart</mat-icon>
+            <mat-icon class="icon" [matMenuTriggerFor]="menu"> account_circle </mat-icon>
 
-    <h1>Products</h1>
+            <mat-menu #menu="matMenu"  class="menu_option" [class]="isDarkTheme() ? 'dark-theme' : 'light-theme'">
+                <div class="menu_option__container">
+                    <button mat-menu-item (click)="Logout()"> <p>Logout</p> </button>
+                </div>
+            </mat-menu>
 
+        </div>
+    </div>
+     
 </header>

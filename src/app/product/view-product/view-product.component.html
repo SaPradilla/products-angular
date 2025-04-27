@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+<div class="product_view">
+   
+    <div class="product_view__header">
+        <button mat-stroked-button (click)="redirectToBack()">  
+            <p>Back</p>
+            <mat-icon>arrow_back_ios</mat-icon>
+        </button>
+    </div>
+    <div class="product__view__container">
+
+        <img [src]="product.image" alt="">
+
+        <div class="product_view__content">
+    
+            <h2>{{ product.name }}</h2>
+            <strong> $ {{ product.value }} </strong>
+            <mat-chip class="brand"> {{ product.brand }} </mat-chip>
+
+            <div class="product_view__actions">
+                <!-- actions cart -->
+                <div class="product_view__actions__cart">
+
+                    <button mat-mini-fab color="primary" (click)="incrementar(product.id)">
+                        <mat-icon>
+                            add
+                        </mat-icon>
+                    </button>
+                    <p>1</p>
+                    <button mat-mini-fab color="primary" (click)="decrementar(product.id)">
+                        <mat-icon>
+                            remove
+                        </mat-icon>
+                    </button>
+                </div>
+    
+                <!-- add -->
+                <button mat-flat-button color="primary" (click)="agregarCarrito(product)">
+                    ADD TO CART
+                </button>
+            </div>
+            <strong> {{ product.category[0].name }} </strong>
+    
+            <p>{{ product.description }}</p>
+    
+        </div>
+    </div>
+
+</div>
+
+<app-footer></app-footer>

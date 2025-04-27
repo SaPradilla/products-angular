@@ -3,20 +3,28 @@
 <div class="content_products">
 
     <div class="content_products_button">
-        <button (click)="handleModal()" class="add-product"> Add Product </button>
+        <button (click)="handleModalEmit()" mat-flat-button color="primary"> Add Product </button>
     </div>
 
-    @if(errorMsg){
-        <p class="error_products"> Error loading products :/ </p>
+   
+    
+    <div class="title__products">
+        <h1>Products</h1>
+        <hr>
+    </div>
+    
+    @if(loading || errorMsg){
+        <div class="list_products">
+        @for (item of items; track $index) {
+                <app-skeleton-card></app-skeleton-card>
+            }
+        </div>
     }
     
-    
     @if(productsList$ | async; as resultObject ){
-    
         <div class="list_products">
-    
             @for( product of resultObject.data; track product.name){
-                <app-card [productItem]="product" />
+                <app-card [productItem]="product" (click)="showProduct(product)" />
             }
     
         </div>

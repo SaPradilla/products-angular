@@ -1,0 +1,109 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+
+$primary-color: (
+    50 : #e5e0e9,
+    100 : #bdb3c8,
+    200 : #9280a3,
+    300 : #664d7e,
+    400 : #452662,
+    500 : #240046,
+    600 : #20003f,
+    700 : #1b0037,
+    800 : #16002f,
+    900 : #0d0020,
+    A100 : #875dff,
+    A200 : #622aff,
+    A400 : #4100f6,
+    A700 : #3a00dc,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #ffffff,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+$accent-color: (
+    50 : #e2f5ff,
+    100 : #b3e3ff,
+    200 : #80ceff,
+    300 : #4eb9ff,
+    400 : #26aaff,
+    500 : #009aff,
+    600 : #008def,
+    700 : #007cdb,
+    800 : #006ac7,
+    900 : #004aa0,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #854747,
+    )
+);
+
+$warn-color: (
+    50 : #ffebee,
+    100 : #ffcdd2,
+    200 : #ef9a9a,
+    300 : #e57373,
+    400 : #ef5350,
+    500 : #f44336,
+    600 : #e53935,
+    700 : #d32f2f,
+    800 : #c62828,
+    900 : #b71c1c,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+    )
+);
+
+$custom-primary-color: mat.m2-define-palette($primary-color,A200);
+$custom-accent-color: mat.m2-define-palette($accent-color);
+$custom-warn-color: mat.m2-define-palette($warn-color);
+
+$light-theme: mat.m2-define-light-theme((
+    color:(
+        primary:$custom-primary-color,
+        accent:$custom-accent-color,
+        warn:$custom-warn-color,
+    ),
+));
+$dark-theme: mat.m2-define-dark-theme((
+  color: (
+    primary: $custom-primary-color,
+    accent: $custom-accent-color,
+    warn: $custom-warn-color,
+  ),
+));
+
+@include mat.all-component-themes($light-theme);
+
+

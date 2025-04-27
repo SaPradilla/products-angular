@@ -1,12 +1,56 @@
-header{
-    height: 5rem;
-    background-color:#240046;
+.header__navbar{
+    height: 2em;
     display: flex;
     align-items: center;
+    justify-content: center;
+    text-align: center;
+
+}
+
+
+header{
+    height: 5rem;
     width: 100%;
-    h1{
-        text-align: center;
-        margin: 0 auto;
-        color: white;
+    display: grid;
+    // place-content: center;
+    .header__content{
+        padding: .5rem .3rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
     }
+    .icon{
+        height: 2rem;
+        width: 2rem;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+    .icons{
+      
+
+    }
+    .header__icon{
+        display: flex;
+        align-items: center;
+        gap: .6rem;
+        p{
+            font-weight: 700;
+            
+        }
+    }
+    a{
+        all: unset;
+        color: pointer;
+    }
+    h1{
+        // text-align: center;
+        margin: 0 auto;
+    }
+ 
+    // .menu_option{
+    //     background-color: red;
+    //     box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.1);
+    //     color: red;
+    // }
 }
